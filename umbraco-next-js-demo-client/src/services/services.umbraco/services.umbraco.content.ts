@@ -65,7 +65,6 @@ const getPageAsync = async (pagePath: string, previewMode: boolean = false) => {
 
     const pageContent = await data.json();
     return pageContent;
-
 }
 
 

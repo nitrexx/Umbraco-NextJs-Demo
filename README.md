@@ -21,6 +21,11 @@ Learn how to build this app here: https://www.etive-mor.com/blog/a-nextjs-fronte
 
 `npm run dev --prefix .\umbraco-next-js-demo-client\`
 
+### Patrik - notes
+Delivery API: http://localhost:59970/umbraco/swagger/index.html?urls.primaryName=Umbraco%20Delivery%20API
+
+Local next: http://localhost:3000/umbraco-nextjs-demo
+
 ### Generate the front-end
 
 `npm run build --prefix .\umbraco-next-js-demo-client\`
