@@ -1,0 +1,1 @@
+export const ROOT_UMBRACO_GUID= 'c59a3527-d045-4ef3-826b-e969aeb4245f'; // The root node of the Umbraco content tree

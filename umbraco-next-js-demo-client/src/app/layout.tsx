@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Link from "next/link";
 import Navbar from "./Common/navbar";
 import { GetDescendantsOfDocumentAsync } from "@/services/services.umbraco/services.umbraco.content";
+import { ROOT_UMBRACO_GUID } from "./lib/constants";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,7 +13,7 @@ export default async function RootLayout({
   Readonly<{
     children: React.ReactNode;
   }>) {
-    const thisPageDescendants = await GetDescendantsOfDocumentAsync('c59a3527-d045-4ef3-826b-e969aeb4245f');
+    const thisPageDescendants = await GetDescendantsOfDocumentAsync(ROOT_UMBRACO_GUID);
     const getMenuItems = thisPageDescendants.items
     .filter((childPage: any) => childPage.properties.isVisible)
     .map((childPage: any) => ({

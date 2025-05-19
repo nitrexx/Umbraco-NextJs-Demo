@@ -6,13 +6,14 @@ import Header from "./Common/header";
 import RenderUmbracoBlocklistRow from "./Common/render-umbraco-blocklist-row";
 import { GenerateDynamicUmbracoMetadataAsync } from "./Common/Helpers/generate-dynamic-umbraco-metadata";
 import { Metadata } from "next";
+import { ROOT_UMBRACO_GUID } from "./lib/constants";
 
 
 
 const Home = async () => {
   const thisPage = await GetPageAsync('/');
 
-  const thisPageDescendants = await GetDescendantsOfDocumentAsync('c59a3527-d045-4ef3-826b-e969aeb4245f');
+  const thisPageDescendants = await GetDescendantsOfDocumentAsync(ROOT_UMBRACO_GUID);
 
   return (<>
     <div className='grid grid-cols-6 gap-4'>
