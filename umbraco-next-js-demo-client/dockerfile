@@ -1,0 +1,23 @@
+# Použi oficiálny Node image
+FROM node:18-alpine
+
+# Nastav pracovný adresár v kontajneri
+WORKDIR /app
+
+# Skopíruj package.json a package-lock.json
+COPY package*.json ./
+
+# Nainštaluj závislosti
+RUN npm install
+
+# Skopíruj zvyšok projektu
+COPY . .
+
+# Nastav port, ktorý bude kontajner počúvať
+EXPOSE 3000
+
+# Buildni Next.js projekt
+RUN npm run build
+
+# Spusti aplikáciu
+CMD ["npm", "start"]

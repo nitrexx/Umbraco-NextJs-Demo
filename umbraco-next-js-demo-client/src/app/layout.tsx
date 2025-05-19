@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import '@progress/kendo-theme-default/dist/all.css';
 import Navbar from "./Common/navbar";
 import { GetDescendantsOfDocumentAsync } from "@/services/services.umbraco/services.umbraco.content";
 import { ROOT_UMBRACO_GUID } from "./lib/constants";
+import { get } from "http";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,6 +22,11 @@ export default async function RootLayout({
       name: childPage.name,
       href: childPage.route.path,
     }));  
+
+    getMenuItems.unshift({
+      name: 'Static',
+      href: '/hello-world',
+    });
 
   return (
     <html lang="en">

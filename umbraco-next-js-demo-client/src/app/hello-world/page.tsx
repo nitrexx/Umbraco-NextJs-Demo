@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import DropDown from "../Common/drop-down/drop-down";
 
 /**
  * Returns a simple HTML page
@@ -9,6 +10,9 @@ const HelloWorld = async () => {
         <>
             <h1 className="text-3xl mb-4">Hello World</h1>
             <p>This page is a static HTML page within the NextJS app. It is not changed by Umbraco</p>
+            <h2 className="text-xl mb-2 mt-6">Kendo test</h2>
+            <div>Choose food category</div>
+            <DropDown />
         </>
     );
 }

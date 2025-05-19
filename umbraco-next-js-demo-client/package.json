@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@progress/kendo-react-dropdowns": "^10.2.0",
+    "@progress/kendo-theme-default": "^11.0.2",
     "cross-env": "^7.0.3",
     "next": "14.1.1",
     "react": "^18",
