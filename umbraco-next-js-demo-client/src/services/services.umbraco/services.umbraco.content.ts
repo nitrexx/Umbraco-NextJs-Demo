@@ -10,7 +10,7 @@ export {
 }
 
 
-const cacheStrategy = 'force-cache'; // 'force-cache' or 'no-store' https://nextjs.org/docs/app/api-reference/functions/fetch#optionscache
+const cacheStrategy = 'no-store';//'force-cache'; // 'force-cache' or 'no-store' https://nextjs.org/docs/app/api-reference/functions/fetch#optionscache
 const UMBRACO_URL = 'http://localhost:59970'; // replace with your Umbraco URL
 const UMBRACO_API_KEY = 'your-api-key'; // replace with your Umbraco API Key if you're using the protected endpoint model
 const UMBRACO_CONTENT_LANGUAGE = 'en-US'; // replace with your Umbraco API Key if you're using the protected endpoint model
@@ -24,8 +24,9 @@ const UMBRACO_CONTENT_LANGUAGE = 'en-US'; // replace with your Umbraco API Key i
  * @param previewMode Set to `true` to see the pages in preview mode. Defaults to false
  * @returns A collection of content items
  */
+// ?fields=properties[contentBlocks,metaTitle,metaKeywords,metaDescription]
 const getAllContentPagedAsync = async (take: number = 10, skip: number = 0, previewMode: boolean = false) => {
-    const data = await fetch(`${UMBRACO_URL}/umbraco/delivery/api/v2/content?skip=${skip}&take=${take}&fields=properties[contentBlocks,metaTitle,metaKeywords,metaDescription,relatedBlogPosts]`,
+    const data = await fetch(`${UMBRACO_URL}/umbraco/delivery/api/v2/content?skip=${skip}&take=${take}`,
     {
         cache: cacheStrategy,
         method: 'GET',
@@ -48,9 +49,10 @@ const getAllContentPagedAsync = async (take: number = 10, skip: number = 0, prev
  * @param previewMode set to `true` to view the content in preview mode. Defaults to `false`
  * @returns A single content item
  */
+// ?fields=properties[contentBlocks,metaTitle,metaKeywords,metaDescription]
 const getPageAsync = async (pagePath: string, previewMode: boolean = false) => {
     if(pagePath == '/' || pagePath == '') { pagePath = '/home'}
-    const url:  string = `${UMBRACO_URL}/umbraco/delivery/api/v2/content/item/${pagePath}/?fields=properties[contentBlocks,metaTitle,metaKeywords,metaDescription]`;
+    const url:  string = `${UMBRACO_URL}/umbraco/delivery/api/v2/content/item/${pagePath}/`;
     const data = await fetch(`${url}`,
     {
         cache: cacheStrategy,
@@ -64,11 +66,9 @@ const getPageAsync = async (pagePath: string, previewMode: boolean = false) => {
     });
 
     const pageContent = await data.json();
+    //console.log('pageContent', pageContent);
     return pageContent;
 }
-
-
-
 
 /**
  * Gets the ancestors of a document by the document's Umbraco ID
@@ -116,7 +116,8 @@ const getChildrenAncestorsOrDescendants = async (documentId: string, childrenAnc
         throw Error(`param documentId must be a valid guid, received '${documentId}'`);
     }
 
-    const url = `${UMBRACO_URL}/umbraco/delivery/api/v2/content/?fields=properties[contentBlocks,metaTitle,metaKeywords,metaDescription]&fetch=${childrenAncestorOrDescendantsSpecifier}:${documentId}&skip=${skip}&take=${take}`;
+    //fields=properties[contentBlocks,metaTitle,metaKeywords,metaDescription]&
+    const url = `${UMBRACO_URL}/umbraco/delivery/api/v2/content/?fetch=${childrenAncestorOrDescendantsSpecifier}:${documentId}&skip=${skip}&take=${take}`;
 
     // console.log('making request to ' + url)
 
@@ -132,5 +133,6 @@ const getChildrenAncestorsOrDescendants = async (documentId: string, childrenAnc
         }
     });
     const umbracoDocuments = await data.json();
+    //console.log('umbracoDocuments', umbracoDocuments);
     return umbracoDocuments;
 }

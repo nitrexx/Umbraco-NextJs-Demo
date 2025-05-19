@@ -396,5 +396,4 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
-/UmbracoNextJsDemo.Site/Smidge/Cache/TISNTB/0d0aab2cc688b7ca8dfc088673f10b6ac2f37407
-/UmbracoNextJsDemo.Site/Smidge/Cache/TISNTB/c660e1d97cada31d45547de0e10abd54ea58d915
+/UmbracoNextJsDemo.Site/Smidge/Cache

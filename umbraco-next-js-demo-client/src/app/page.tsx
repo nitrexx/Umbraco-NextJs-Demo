@@ -14,9 +14,7 @@ const Home = async () => {
 
   const thisPageDescendants = await GetDescendantsOfDocumentAsync('c59a3527-d045-4ef3-826b-e969aeb4245f');
 
-
   return (<>
-
     <div className='grid grid-cols-6 gap-4'>
       <div className='col-span-6 pb-12'>
         <Header thisPage={thisPage} />
