@@ -7,6 +7,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Metadata } from "next";
 import { GenerateDynamicUmbracoMetadataAsync } from "../Common/Helpers/generate-dynamic-umbraco-metadata";
+import CardItem from "../Common/card-item/card-item";
 
 
 const page = async ({ params }: { params: any }) => {
@@ -27,7 +28,7 @@ const page = async ({ params }: { params: any }) => {
 
     return (
         <>
-            <div className='grid grid-cols-6 gap-4'>
+            <div className='grid grid-cols-6 gap-4'> 
                 <div className='col-span-6 pb-12'>
                     {
                         /** 
@@ -64,17 +65,15 @@ const page = async ({ params }: { params: any }) => {
                         }
                         {thisPageChildren.items && (
                             <>
-                                <ol className='grid grid-cols-2 gap-4'>
+                                <ol className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 items-stretch">
                                     {thisPageChildren.items.reverse().map((childPage: any) => (
-
-                                        <section key={childPage.id} className="gap-7 mb-6 space-y-6">
-                                            <Link href={childPage.route.path}>
-                                                <div className='block max-w-sm p-6 bg-white border border-gray-200 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700'>
-                                                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{childPage.name}</h5>
-                                                    <p className="font-normal text-gray-700 dark:text-gray-400">{childPage.properties.metaDescription}</p>
-                                                </div>
-                                            </Link>
-                                        </section>
+                                    <CardItem
+                                        key={childPage.id}
+                                        id={childPage.id}
+                                        name={childPage.name}
+                                        path={childPage.route.path}
+                                        description={childPage.properties.metaDescription}
+                                        />
                                     ))}
                                 </ol>
                             </>
