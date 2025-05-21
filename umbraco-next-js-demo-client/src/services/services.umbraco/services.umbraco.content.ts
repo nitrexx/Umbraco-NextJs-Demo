@@ -11,7 +11,7 @@ export {
 
 
 const cacheStrategy = 'no-store';//'force-cache'; // 'force-cache' or 'no-store' https://nextjs.org/docs/app/api-reference/functions/fetch#optionscache
-const UMBRACO_URL = 'http://localhost:59970'; // replace with your Umbraco URL
+const UMBRACO_URL = process.env.UMBRACO_API_URL; //'http://localhost:59970'; // replace with your Umbraco URL
 const UMBRACO_API_KEY = 'your-api-key'; // replace with your Umbraco API Key if you're using the protected endpoint model
 const UMBRACO_CONTENT_LANGUAGE = 'en-US'; // replace with your Umbraco API Key if you're using the protected endpoint model
 

@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  umbraco:
+    build:
+      context: ./UmbracoNextJsDemo.Site
+      dockerfile: Dockerfile
+    container_name: umbraco
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    networks:
+      - webnet
+
+  nextjs:
+    build:
+      context: ./umbraco-next-js-demo-client
+      dockerfile: Dockerfile
+    container_name: nextjs
+    ports:
+      - "3000:3000"
+    depends_on:
+      - umbraco
+    environment:
+      - UMBRACO_API_URL=http://umbraco:8080
+    networks:
+      - webnet
+
+networks:
+  webnet:
+    driver: bridge

@@ -1,7 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  env:{
+    // Umbraco API URL
+    UMBRACO_API_URL: process.env.UMBRACO_API_URL || 'http://localhost:59970',
+  },
   basePath: '/umbraco-nextjs-demo',
-    output: "export",
+    //output: "export",
     images: {
         remotePatterns: [
           {
