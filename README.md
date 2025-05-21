@@ -32,5 +32,8 @@ The files will be output in `./umbraco-next-js-demo-client/out/`
 - BE elivery API: http://localhost:59970/umbraco/swagger/index.html?urls.primaryName=Umbraco%20Delivery%20API
 - FE nextjs: http://localhost:3000/umbraco-nextjs-demo
 
-## Patrik - docker (not working)
+## Patrik - docker
 - `docker-compose up --build`
+- FE nextjs: http://localhost:3000/umbraco-nextjs-demo
+- BE umbraco: http://localhost:8080/umbraco
+
